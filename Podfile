@@ -6,6 +6,11 @@ target 'Django' do
   use_frameworks!
 
   # Pods for Django
+  pod 'RxSwift', '~> 5.0.1'
+  pod 'RxCocoa', '~> 5.0.1'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+  pod 'SDWebImage'
 
   target 'DjangoTests' do
     inherit! :search_paths
