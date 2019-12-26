@@ -3,18 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3C6A114123B5240100F1D8D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A114023B5240100F1D8D7 /* AppDelegate.swift */; };
-		3C6A114323B5240100F1D8D7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A114223B5240100F1D8D7 /* FirstViewController.swift */; };
-		3C6A114523B5240100F1D8D7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A114423B5240100F1D8D7 /* SecondViewController.swift */; };
+		3C6A114323B5240100F1D8D7 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A114223B5240100F1D8D7 /* DiscoverViewController.swift */; };
+		3C6A114523B5240100F1D8D7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A114423B5240100F1D8D7 /* SearchViewController.swift */; };
 		3C6A114823B5240100F1D8D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C6A114623B5240100F1D8D7 /* Main.storyboard */; };
 		3C6A114A23B5240200F1D8D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C6A114923B5240200F1D8D7 /* Assets.xcassets */; };
 		3C6A114D23B5240200F1D8D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C6A114B23B5240200F1D8D7 /* LaunchScreen.storyboard */; };
 		3C6A115823B5240200F1D8D7 /* DjangoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A115723B5240200F1D8D7 /* DjangoTests.swift */; };
 		3C6A116323B5240200F1D8D7 /* DjangoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A116223B5240200F1D8D7 /* DjangoUITests.swift */; };
+		3CA3360423B54B2000675D66 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA3360323B54B2000675D66 /* AboutViewController.swift */; };
 		4FF67236513FEDC31997D6A2 /* Pods_DjangoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27242E5CE98C748C880D936B /* Pods_DjangoTests.framework */; };
 		77ABD3D8869CCBE010A22207 /* Pods_Django.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77A358BF8120079A82650FB /* Pods_Django.framework */; };
 		B2C817BB3338969B3B3756A9 /* Pods_Django_DjangoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4371FE3129D8612ACCCC972 /* Pods_Django_DjangoUITests.framework */; };
@@ -42,8 +43,8 @@
 		31202EBC3A048B3ADBCED0EF /* Pods-Django.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django.release.xcconfig"; path = "Target Support Files/Pods-Django/Pods-Django.release.xcconfig"; sourceTree = "<group>"; };
 		3C6A113D23B5240100F1D8D7 /* Django.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Django.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A114023B5240100F1D8D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C6A114223B5240100F1D8D7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3C6A114423B5240100F1D8D7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3C6A114223B5240100F1D8D7 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		3C6A114423B5240100F1D8D7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3C6A114723B5240100F1D8D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C6A114923B5240200F1D8D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C6A114C23B5240200F1D8D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		3C6A115E23B5240200F1D8D7 /* DjangoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DjangoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A116223B5240200F1D8D7 /* DjangoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjangoUITests.swift; sourceTree = "<group>"; };
 		3C6A116423B5240200F1D8D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CA3360323B54B2000675D66 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		426ECA145E8BE7E2F663F7D6 /* Pods-DjangoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.debug.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72DC61EAEB554C59A77CBE11 /* Pods-Django-DjangoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django-DjangoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Django-DjangoUITests/Pods-Django-DjangoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		958632C288789EBCFD653AAB /* Pods-DjangoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.release.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,8 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				3C6A114023B5240100F1D8D7 /* AppDelegate.swift */,
-				3C6A114223B5240100F1D8D7 /* FirstViewController.swift */,
-				3C6A114423B5240100F1D8D7 /* SecondViewController.swift */,
+				3C6A114223B5240100F1D8D7 /* DiscoverViewController.swift */,
+				3CA3360323B54B2000675D66 /* AboutViewController.swift */,
+				3C6A114423B5240100F1D8D7 /* SearchViewController.swift */,
 				3C6A114623B5240100F1D8D7 /* Main.storyboard */,
 				3C6A114923B5240200F1D8D7 /* Assets.xcassets */,
 				3C6A114B23B5240200F1D8D7 /* LaunchScreen.storyboard */,
@@ -165,7 +168,6 @@
 				426ECA145E8BE7E2F663F7D6 /* Pods-DjangoTests.debug.xcconfig */,
 				958632C288789EBCFD653AAB /* Pods-DjangoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -408,9 +410,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C6A114523B5240100F1D8D7 /* SecondViewController.swift in Sources */,
+				3C6A114523B5240100F1D8D7 /* SearchViewController.swift in Sources */,
 				3C6A114123B5240100F1D8D7 /* AppDelegate.swift in Sources */,
-				3C6A114323B5240100F1D8D7 /* FirstViewController.swift in Sources */,
+				3CA3360423B54B2000675D66 /* AboutViewController.swift in Sources */,
+				3C6A114323B5240100F1D8D7 /* DiscoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
