@@ -16,6 +16,7 @@
 		3C6A115823B5240200F1D8D7 /* DjangoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A115723B5240200F1D8D7 /* DjangoTests.swift */; };
 		3C6A116323B5240200F1D8D7 /* DjangoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A116223B5240200F1D8D7 /* DjangoUITests.swift */; };
 		3CA3360423B54B2000675D66 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA3360323B54B2000675D66 /* AboutViewController.swift */; };
+		3CB0F53F23B5685A0068F10B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0F53E23B5685A0068F10B /* Movie.swift */; };
 		4FF67236513FEDC31997D6A2 /* Pods_DjangoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27242E5CE98C748C880D936B /* Pods_DjangoTests.framework */; };
 		77ABD3D8869CCBE010A22207 /* Pods_Django.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77A358BF8120079A82650FB /* Pods_Django.framework */; };
 		B2C817BB3338969B3B3756A9 /* Pods_Django_DjangoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4371FE3129D8612ACCCC972 /* Pods_Django_DjangoUITests.framework */; };
@@ -56,6 +57,7 @@
 		3C6A116223B5240200F1D8D7 /* DjangoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjangoUITests.swift; sourceTree = "<group>"; };
 		3C6A116423B5240200F1D8D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CA3360323B54B2000675D66 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		3CB0F53E23B5685A0068F10B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		426ECA145E8BE7E2F663F7D6 /* Pods-DjangoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.debug.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72DC61EAEB554C59A77CBE11 /* Pods-Django-DjangoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django-DjangoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Django-DjangoUITests/Pods-Django-DjangoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		958632C288789EBCFD653AAB /* Pods-DjangoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.release.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,10 +130,9 @@
 		3C6A113F23B5240100F1D8D7 /* Django */ = {
 			isa = PBXGroup;
 			children = (
+				3CB0F53D23B567410068F10B /* Model */,
+				3CB0F53C23B566B10068F10B /* ViewController */,
 				3C6A114023B5240100F1D8D7 /* AppDelegate.swift */,
-				3C6A114223B5240100F1D8D7 /* DiscoverViewController.swift */,
-				3CA3360323B54B2000675D66 /* AboutViewController.swift */,
-				3C6A114423B5240100F1D8D7 /* SearchViewController.swift */,
 				3C6A114623B5240100F1D8D7 /* Main.storyboard */,
 				3C6A114923B5240200F1D8D7 /* Assets.xcassets */,
 				3C6A114B23B5240200F1D8D7 /* LaunchScreen.storyboard */,
@@ -156,6 +157,24 @@
 				3C6A116423B5240200F1D8D7 /* Info.plist */,
 			);
 			path = DjangoUITests;
+			sourceTree = "<group>";
+		};
+		3CB0F53C23B566B10068F10B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CA3360323B54B2000675D66 /* AboutViewController.swift */,
+				3C6A114423B5240100F1D8D7 /* SearchViewController.swift */,
+				3C6A114223B5240100F1D8D7 /* DiscoverViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3CB0F53D23B567410068F10B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3CB0F53E23B5685A0068F10B /* Movie.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5B605A88C7D8A8CDAD717D26 /* Pods */ = {
@@ -414,6 +433,7 @@
 				3C6A114123B5240100F1D8D7 /* AppDelegate.swift in Sources */,
 				3CA3360423B54B2000675D66 /* AboutViewController.swift in Sources */,
 				3C6A114323B5240100F1D8D7 /* DiscoverViewController.swift in Sources */,
+				3CB0F53F23B5685A0068F10B /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
