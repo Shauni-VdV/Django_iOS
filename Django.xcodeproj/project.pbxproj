@@ -15,6 +15,9 @@
 		3C6A114D23B5240200F1D8D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C6A114B23B5240200F1D8D7 /* LaunchScreen.storyboard */; };
 		3C6A115823B5240200F1D8D7 /* DjangoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A115723B5240200F1D8D7 /* DjangoTests.swift */; };
 		3C6A116323B5240200F1D8D7 /* DjangoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6A116223B5240200F1D8D7 /* DjangoUITests.swift */; };
+		4FF67236513FEDC31997D6A2 /* Pods_DjangoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27242E5CE98C748C880D936B /* Pods_DjangoTests.framework */; };
+		77ABD3D8869CCBE010A22207 /* Pods_Django.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77A358BF8120079A82650FB /* Pods_Django.framework */; };
+		B2C817BB3338969B3B3756A9 /* Pods_Django_DjangoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4371FE3129D8612ACCCC972 /* Pods_Django_DjangoUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27242E5CE98C748C880D936B /* Pods_DjangoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DjangoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31202EBC3A048B3ADBCED0EF /* Pods-Django.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django.release.xcconfig"; path = "Target Support Files/Pods-Django/Pods-Django.release.xcconfig"; sourceTree = "<group>"; };
 		3C6A113D23B5240100F1D8D7 /* Django.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Django.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A114023B5240100F1D8D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C6A114223B5240100F1D8D7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		3C6A115E23B5240200F1D8D7 /* DjangoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DjangoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C6A116223B5240200F1D8D7 /* DjangoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjangoUITests.swift; sourceTree = "<group>"; };
 		3C6A116423B5240200F1D8D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		426ECA145E8BE7E2F663F7D6 /* Pods-DjangoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.debug.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		72DC61EAEB554C59A77CBE11 /* Pods-Django-DjangoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django-DjangoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Django-DjangoUITests/Pods-Django-DjangoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		958632C288789EBCFD653AAB /* Pods-DjangoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.release.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.release.xcconfig"; sourceTree = "<group>"; };
+		A0A589CA9FD4EC28C2C891EE /* Pods-Django-DjangoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django-DjangoUITests.release.xcconfig"; path = "Target Support Files/Pods-Django-DjangoUITests/Pods-Django-DjangoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B3046CF1799289C3D0C7A44B /* Pods-Django.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django.debug.xcconfig"; path = "Target Support Files/Pods-Django/Pods-Django.debug.xcconfig"; sourceTree = "<group>"; };
+		D77A358BF8120079A82650FB /* Pods_Django.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Django.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4371FE3129D8612ACCCC972 /* Pods_Django_DjangoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Django_DjangoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77ABD3D8869CCBE010A22207 /* Pods_Django.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF67236513FEDC31997D6A2 /* Pods_DjangoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C817BB3338969B3B3756A9 /* Pods_Django_DjangoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		146F7EBBC690E4259F08E1F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D77A358BF8120079A82650FB /* Pods_Django.framework */,
+				E4371FE3129D8612ACCCC972 /* Pods_Django_DjangoUITests.framework */,
+				27242E5CE98C748C880D936B /* Pods_DjangoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3C6A113423B5240100F1D8D7 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 				3C6A115623B5240200F1D8D7 /* DjangoTests */,
 				3C6A116123B5240200F1D8D7 /* DjangoUITests */,
 				3C6A113E23B5240100F1D8D7 /* Products */,
+				5B605A88C7D8A8CDAD717D26 /* Pods */,
+				146F7EBBC690E4259F08E1F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +155,20 @@
 			path = DjangoUITests;
 			sourceTree = "<group>";
 		};
+		5B605A88C7D8A8CDAD717D26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3046CF1799289C3D0C7A44B /* Pods-Django.debug.xcconfig */,
+				31202EBC3A048B3ADBCED0EF /* Pods-Django.release.xcconfig */,
+				72DC61EAEB554C59A77CBE11 /* Pods-Django-DjangoUITests.debug.xcconfig */,
+				A0A589CA9FD4EC28C2C891EE /* Pods-Django-DjangoUITests.release.xcconfig */,
+				426ECA145E8BE7E2F663F7D6 /* Pods-DjangoTests.debug.xcconfig */,
+				958632C288789EBCFD653AAB /* Pods-DjangoTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +176,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C6A116723B5240300F1D8D7 /* Build configuration list for PBXNativeTarget "Django" */;
 			buildPhases = (
+				D03D820824B6B52691D0A20F /* [CP] Check Pods Manifest.lock */,
 				3C6A113923B5240100F1D8D7 /* Sources */,
 				3C6A113A23B5240100F1D8D7 /* Frameworks */,
 				3C6A113B23B5240100F1D8D7 /* Resources */,
@@ -152,6 +194,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C6A116A23B5240300F1D8D7 /* Build configuration list for PBXNativeTarget "DjangoTests" */;
 			buildPhases = (
+				431D13E2D61E0825DCAAA6B2 /* [CP] Check Pods Manifest.lock */,
 				3C6A114F23B5240200F1D8D7 /* Sources */,
 				3C6A115023B5240200F1D8D7 /* Frameworks */,
 				3C6A115123B5240200F1D8D7 /* Resources */,
@@ -170,6 +213,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C6A116D23B5240300F1D8D7 /* Build configuration list for PBXNativeTarget "DjangoUITests" */;
 			buildPhases = (
+				5CF01073293835B492F1C16D /* [CP] Check Pods Manifest.lock */,
 				3C6A115A23B5240200F1D8D7 /* Sources */,
 				3C6A115B23B5240200F1D8D7 /* Frameworks */,
 				3C6A115C23B5240200F1D8D7 /* Resources */,
@@ -253,6 +297,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		431D13E2D61E0825DCAAA6B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DjangoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CF01073293835B492F1C16D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Django-DjangoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D03D820824B6B52691D0A20F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Django-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C6A113923B5240100F1D8D7 /* Sources */ = {
@@ -434,6 +547,7 @@
 		};
 		3C6A116823B5240300F1D8D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3046CF1799289C3D0C7A44B /* Pods-Django.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +566,7 @@
 		};
 		3C6A116923B5240300F1D8D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31202EBC3A048B3ADBCED0EF /* Pods-Django.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +585,7 @@
 		};
 		3C6A116B23B5240300F1D8D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 426ECA145E8BE7E2F663F7D6 /* Pods-DjangoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +607,7 @@
 		};
 		3C6A116C23B5240300F1D8D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 958632C288789EBCFD653AAB /* Pods-DjangoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +629,7 @@
 		};
 		3C6A116E23B5240300F1D8D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72DC61EAEB554C59A77CBE11 /* Pods-Django-DjangoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +650,7 @@
 		};
 		3C6A116F23B5240300F1D8D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0A589CA9FD4EC28C2C891EE /* Pods-Django-DjangoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
