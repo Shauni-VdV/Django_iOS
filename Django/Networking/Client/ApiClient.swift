@@ -35,6 +35,7 @@ class ApiClient {
         }
     }
     
+    // Functie voor een GET request, zodat dit niet voor elke call herhaald moet worden
     class func getRequestTask<ResponseType: Decodable>(
         url: URL, responseType: ResponseType.Type,
         completion: @escaping(ResponseType?, Error?) -> Void) -> URLSessionDataTask {
@@ -71,6 +72,7 @@ class ApiClient {
         return task
     }
     
+    // Functie voor een POST request, zodat dit niet voor elke call herhaald moet worden
     class func postRequestTask<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -105,7 +107,10 @@ class ApiClient {
         task.resume()
     }
     
+    
+    // GET: Populaire films
     class func getPopular(completion: @escaping([Movie], Error?) -> Void) {
+        print("Entering getPopular in ApiClient")
         getRequestTask(url: Endpoints.getPopular.url,responseType: MovieListResponse.self){response, error in
             if let response = response {
                 completion(response.results, nil)
@@ -115,8 +120,9 @@ class ApiClient {
         }
     }
     
-    
+    // GET: Meest recente films
     class func getLatest(completion: @escaping([Movie], Error?) -> Void) {
+        
         getRequestTask(url: Endpoints.getLatest.url,responseType: MovieListResponse.self){response, error in
             if let response = response {
                 completion(response.results, nil)
