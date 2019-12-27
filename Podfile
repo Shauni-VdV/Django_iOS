@@ -11,6 +11,7 @@ target 'Django' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SDWebImage'
+  pod 'Moya'
 
   target 'DjangoTests' do
     inherit! :search_paths
