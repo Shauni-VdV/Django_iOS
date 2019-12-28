@@ -17,6 +17,7 @@ class DiscoverViewController: UIViewController {
     
     
     var movies = [Movie]()
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,13 @@ class DiscoverViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         PopularTableView.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "showMovieDetail"{
+            let detailViewController = segue.destination as! MovieDetailViewController
+            detailViewController.movie = movies[selectedIndex]
+
+        }
     }
     
 }
@@ -68,6 +76,12 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate{
         cell.setNeedsLayout()
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        selectedIndex = indexPath.section
+        performSegue(withIdentifier: "showMovieDetail", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

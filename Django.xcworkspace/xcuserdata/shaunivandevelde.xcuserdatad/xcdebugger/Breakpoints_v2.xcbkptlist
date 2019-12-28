@@ -46,10 +46,10 @@
             filePath = "Django/ViewController/DiscoverViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "DiscoverViewController"
-            landmarkType = "3">
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

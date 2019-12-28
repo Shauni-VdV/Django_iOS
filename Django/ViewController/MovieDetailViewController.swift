@@ -19,7 +19,8 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = movie.title
         
-        self.BackDropImageView.sd_setImage(with: movie.backdropURL,  placeholderImage: UIImage(named: "PlaceholderPoster"))
+        self.BackDropImageView.sd_setImage(with: movie.backdropURL,  placeholderImage: UIImage(named: "PlaceholderBackdrop"))
+        
         self.TitleLabel.text = movie.title
     }
     
