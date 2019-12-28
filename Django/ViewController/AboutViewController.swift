@@ -10,9 +10,14 @@ import UIKit
 
 class AboutViewController: UIViewController {
 
+    @IBOutlet weak var LoginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        LoginButton.layer.cornerRadius = 10
+        LoginButton.layer.borderWidth = 1
+        LoginButton.layer.borderColor = UIColor.green.cgColor
+        
     }
 
 
