@@ -4,7 +4,9 @@
 //
 //  Created by Shauni Van de Velde on 26/12/2019.
 //  Copyright © 2019 Shauni Van de Velde. All rights reserved.
-//
+// REF : Spacing between items in table view: https://stackoverflow.com/questions/6216839/how-to-add-spacing-between-uitableviewcell/33931591#33931591
+
+
 
 import UIKit
 import SDWebImage
@@ -15,10 +17,10 @@ class DiscoverViewController: UIViewController {
     
     
     var movies = [Movie]()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Discover"
 
         // Do any additional setup after loading the view.
         ApiClient.getPopular() { movies, error in
@@ -36,21 +38,32 @@ class DiscoverViewController: UIViewController {
 }
 extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return 1
 
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
              let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemViewCell")!
-        let movie = movies[indexPath.row]
+        let movie = movies[indexPath.section]
         
         cell.textLabel?.text = movie.title
         cell.imageView?.image = UIImage(named: "PlaceholderPoster")
         cell.imageView?.sd_setImage(with: movie.posterURL, placeholderImage: UIImage(named: "PlaceholderPoster"))
+        cell.imageView?.frame = cell.frame.offsetBy(dx: 10, dy: 10);
+
         cell.layoutIfNeeded()
         cell.setNeedsLayout()
 
