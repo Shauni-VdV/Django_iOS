@@ -47,16 +47,17 @@
                     <navigationItem key="navigationItem" id="fP9-BG-T9k"/>
                     <connections>
                         <outlet property="PopularTableView" destination="v3x-ax-vWv" id="z56-V6-COg"/>
+                        <segue destination="L0v-RK-iVN" kind="showDetail" id="gfo-c1-T3J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-641" y="-271"/>
+            <point key="canvasLocation" x="-622" y="-271"/>
         </scene>
-        <!--Favorites-->
+        <!--Search-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Favorites" id="8rJ-Kc-sve" customClass="SearchViewController" customModule="Django" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="8rJ-Kc-sve" customClass="SearchViewController" customModule="Django" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,10 +87,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" id="910-9q-Jml"/>
+                    <connections>
+                        <segue destination="L0v-RK-iVN" kind="showDetail" id="pc5-cl-3b2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-642" y="431"/>
+            <point key="canvasLocation" x="-623" y="430"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -161,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="-1497" y="-271"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="NDL-Gb-MV2">
             <objects>
-                <navigationController id="E1f-dh-m5x" sceneMemberID="viewController">
+                <navigationController title="Search" id="E1f-dh-m5x" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="naj-Q0-3hH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a5y-Cl-xhD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -195,11 +199,55 @@
             </objects>
             <point key="canvasLocation" x="-1497" y="1100"/>
         </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="TVc-mX-zci">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="L0v-RK-iVN" customClass="MovieDetailViewController" customModule="TheMovieManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b5G-db-GLY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderBackdrop" translatesAutoresizingMaskIntoConstraints="NO" id="zbe-DB-lWO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcf-gm-d1W">
+                                <rect key="frame" x="0.0" y="211" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="t7U-en-4hw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vcf-gm-d1W" firstAttribute="leading" secondItem="zbe-DB-lWO" secondAttribute="leading" id="Cus-4Y-beo"/>
+                            <constraint firstItem="vcf-gm-d1W" firstAttribute="top" secondItem="zbe-DB-lWO" secondAttribute="bottom" constant="-14" id="FZx-HQ-v02"/>
+                            <constraint firstItem="zbe-DB-lWO" firstAttribute="leading" secondItem="wkh-EK-vzD" secondAttribute="leading" id="WKf-7i-apv"/>
+                            <constraint firstItem="zbe-DB-lWO" firstAttribute="top" secondItem="wkh-EK-vzD" secondAttribute="top" id="bQ1-bw-CVW"/>
+                            <constraint firstItem="wkh-EK-vzD" firstAttribute="trailing" secondItem="zbe-DB-lWO" secondAttribute="trailing" id="mF6-HL-f04"/>
+                            <constraint firstItem="vcf-gm-d1W" firstAttribute="trailing" secondItem="wkh-EK-vzD" secondAttribute="trailing" id="udO-zC-Fv7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wkh-EK-vzD"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="zbe-DB-lWO" id="fuN-3l-ATe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1JF-xW-iDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="429.60000000000002" y="104.7976011994003"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="PlaceholderBackdrop" width="480" height="225"/>
         <image name="first" width="30" height="30"/>
         <image name="info.circle.fill" catalog="system" width="64" height="60"/>
         <image name="second" width="30" height="30"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gfo-c1-T3J"/>
+    </inferredMetricsTieBreakers>
 </document>
