@@ -24,9 +24,8 @@ class DiscoverViewController: UIViewController {
         ApiClient.getPopular() { movies, error in
             self.movies = movies
             self.PopularTableView.reloadData()
-
-            
         }
+        self.PopularTableView.rowHeight = 200
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -48,8 +47,11 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
              let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemViewCell")!
         let movie = movies[indexPath.row]
+        
         cell.textLabel?.text = movie.title
-        cell.imageView?.sd_setImage(with: movie.posterURL, placeholderImage: UIImage(named: "placeholder.png"))
+        cell.imageView?.image = UIImage(named: "PlaceholderPoster")
+        cell.imageView?.sd_setImage(with: movie.posterURL, placeholderImage: UIImage(named: "PlaceholderPoster"))
+        cell.layoutIfNeeded()
         cell.setNeedsLayout()
 
         return cell
