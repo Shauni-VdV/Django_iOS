@@ -12,6 +12,8 @@ target 'Django' do
   pod 'SwiftyJSON'
   pod 'SDWebImage'
   pod 'Moya'
+  pod 'Cosmos', '~> 20.0'
+
 
   target 'DjangoTests' do
     inherit! :search_paths
