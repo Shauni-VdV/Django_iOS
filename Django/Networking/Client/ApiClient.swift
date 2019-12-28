@@ -132,5 +132,16 @@ class ApiClient {
         }
     }
     
+    class func search(query: String, completion: @escaping([Movie], Error?) -> Void ){
+    
+        let task = getRequestTask(url: Endpoints.search(query).url, responseType: MovieListResponse.self) { response, error in
+            if let response = response {
+                completion(response.results, nil)
+            } else {
+                completion([], error)
+            }
+        }
+    }
+    
 }
 
