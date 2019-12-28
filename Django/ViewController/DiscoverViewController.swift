@@ -4,8 +4,8 @@
 //
 //  Created by Shauni Van de Velde on 26/12/2019.
 //  Copyright © 2019 Shauni Van de Velde. All rights reserved.
-// REF : Spacing between items in table view: https://stackoverflow.com/questions/6216839/how-to-add-spacing-between-uitableviewcell/33931591#33931591
-
+// SOURCE : Filling in UITableView: https://stackoverflow.com/questions/31673607/swift-tableview-in-viewcontroller/31691216
+// SOURCE : Spacing between items in table view: https://stackoverflow.com/questions/6216839/how-to-add-spacing-between-uitableviewcell/33931591#33931591
 
 
 import UIKit

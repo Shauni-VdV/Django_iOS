@@ -57,14 +57,17 @@
         <!--Search-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Search" id="8rJ-Kc-sve" customClass="SearchViewController" customModule="Django" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" title="Search" id="8rJ-Kc-sve" customClass="SearchViewController" customModule="Django" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iTq-IC-S6G">
+                            <searchBar contentMode="redraw" placeholder="Search movies by name.." translatesAutoresizingMaskIntoConstraints="NO" id="iTq-IC-S6G">
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="aeM-BY-vMa"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="keR-Ea-7o5">
                                 <rect key="frame" x="0.0" y="100" width="375" height="518"/>
@@ -102,7 +105,7 @@
                     <connections>
                         <outlet property="SearchBar" destination="iTq-IC-S6G" id="SYa-ZG-8zi"/>
                         <outlet property="SearchTableView" destination="keR-Ea-7o5" id="U2s-wA-7hE"/>
-                        <segue destination="L0v-RK-iVN" kind="showDetail" id="pc5-cl-3b2"/>
+                        <segue destination="L0v-RK-iVN" kind="showDetail" identifier="showMovieDetail" id="pc5-cl-3b2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

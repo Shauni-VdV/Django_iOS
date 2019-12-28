@@ -5,8 +5,12 @@
 //  Created by Shauni Van de Velde on 27/12/2019.
 //  Copyright © 2019 Shauni Van de Velde. All rights reserved.
 //
+// Reusable Request method references:
+// SOURCE: https://stackoverflow.com/questions/52591866/whats-the-correct-usage-of-urlsession-create-new-one-or-reuse-same-one
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 class ApiClient {
     static let apiKey = "1db8f6ebe89295a86017d0bfe634af7b"
@@ -26,7 +30,7 @@ class ApiClient {
             switch self {
             case .getPopular: return Endpoints.baseUrl + "/movie/popular" + Endpoints.apiKeyParam
             case .getLatest: return Endpoints.baseUrl + "/movie/latest" + Endpoints.apiKeyParam
-            case .search(let query): return Endpoints.baseUrl + "/movie/search" + Endpoints.apiKeyParam + "&query=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))"
+            case .search(let query): return Endpoints.baseUrl + "/search/movie" + Endpoints.apiKeyParam + "&query=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))"
             }
         }
         
@@ -56,7 +60,7 @@ class ApiClient {
                 }
             }catch {
                 do {
-                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error
+                    let errorResponse = try decoder.decode(TMDbResponse.self, from: data) as Error
                     DispatchQueue.main.async {
                         completion(nil, errorResponse)
                     }
@@ -74,6 +78,7 @@ class ApiClient {
     
     // Functie voor een POST request, zodat dit niet voor elke call herhaald moet worden
     class func postRequestTask<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = try! JSONEncoder().encode(body)
@@ -93,7 +98,7 @@ class ApiClient {
                 }
             } catch {
                 do {
-                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error
+                    let errorResponse = try decoder.decode(TMDbResponse.self, from: data) as Error
                     DispatchQueue.main.async {
                         completion(nil, errorResponse)
                     }
@@ -122,7 +127,7 @@ class ApiClient {
     
     // GET: Meest recente films
     class func getLatest(completion: @escaping([Movie], Error?) -> Void) {
-        
+
         getRequestTask(url: Endpoints.getLatest.url,responseType: MovieListResponse.self){response, error in
             if let response = response {
                 completion(response.results, nil)
@@ -132,8 +137,8 @@ class ApiClient {
         }
     }
     
-    class func search(query: String, completion: @escaping([Movie], Error?) -> Void ){
-    
+    class func search(query: String, completion: @escaping([Movie], Error?) -> Void ) -> URLSessionDataTask{
+        print("Entering search in ApiClient")
         let task = getRequestTask(url: Endpoints.search(query).url, responseType: MovieListResponse.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
@@ -141,6 +146,7 @@ class ApiClient {
                 completion([], error)
             }
         }
+        return task
     }
     
 }
