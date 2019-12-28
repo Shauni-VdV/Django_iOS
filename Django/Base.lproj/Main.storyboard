@@ -214,30 +214,39 @@
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcf-gm-d1W">
-                                <rect key="frame" x="10" y="250" width="365" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="t7U-en-4hw"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcf-gm-d1W">
+                                <rect key="frame" x="10" y="260" width="365" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zn2-Gm-Haa" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="10" y="297" width="120" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Zn2-Gm-Haa" firstAttribute="leading" secondItem="wkh-EK-vzD" secondAttribute="leading" constant="10" id="6zB-Iw-bME"/>
                             <constraint firstItem="zbe-DB-lWO" firstAttribute="top" secondItem="b5G-db-GLY" secondAttribute="top" id="8gY-Ec-Vei"/>
-                            <constraint firstItem="vcf-gm-d1W" firstAttribute="top" secondItem="zbe-DB-lWO" secondAttribute="bottom" id="G4M-iu-7tm"/>
+                            <constraint firstItem="vcf-gm-d1W" firstAttribute="top" secondItem="zbe-DB-lWO" secondAttribute="bottom" constant="10" id="G4M-iu-7tm"/>
                             <constraint firstAttribute="trailing" secondItem="zbe-DB-lWO" secondAttribute="trailing" id="GR7-G3-5PD"/>
+                            <constraint firstItem="Zn2-Gm-Haa" firstAttribute="top" secondItem="vcf-gm-d1W" secondAttribute="bottom" constant="8" symbolic="YES" id="GdH-A4-q0v"/>
                             <constraint firstItem="zbe-DB-lWO" firstAttribute="leading" secondItem="wkh-EK-vzD" secondAttribute="leading" id="WKf-7i-apv"/>
+                            <constraint firstItem="wkh-EK-vzD" firstAttribute="trailing" secondItem="vcf-gm-d1W" secondAttribute="trailing" id="YOq-gG-9BO"/>
                             <constraint firstItem="zbe-DB-lWO" firstAttribute="top" secondItem="wkh-EK-vzD" secondAttribute="top" id="bQ1-bw-CVW"/>
                             <constraint firstItem="vcf-gm-d1W" firstAttribute="leading" secondItem="wkh-EK-vzD" secondAttribute="leading" constant="10" id="l9R-gp-cG2"/>
-                            <constraint firstItem="vcf-gm-d1W" firstAttribute="trailing" secondItem="wkh-EK-vzD" secondAttribute="trailing" id="udO-zC-Fv7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wkh-EK-vzD"/>
                     </view>
                     <connections>
                         <outlet property="BackDropImageView" destination="zbe-DB-lWO" id="y3c-pm-gPp"/>
+                        <outlet property="RatingView" destination="Zn2-Gm-Haa" id="G5S-oh-t7F"/>
                         <outlet property="TitleLabel" destination="vcf-gm-d1W" id="Z3O-Ay-JWc"/>
                     </connections>
                 </viewController>
