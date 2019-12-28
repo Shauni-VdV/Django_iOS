@@ -204,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				3CB0F55323B668E20068F10B /* Response */,
-				3CB0F55223B668DC0068F10B /* Request */,
 				3CB0F55123B668C80068F10B /* Client */,
 			);
 			path = Networking;
@@ -216,13 +215,6 @@
 				3CB0F55823B669710068F10B /* ApiClient.swift */,
 			);
 			path = Client;
-			sourceTree = "<group>";
-		};
-		3CB0F55223B668DC0068F10B /* Request */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Request;
 			sourceTree = "<group>";
 		};
 		3CB0F55323B668E20068F10B /* Response */ = {
