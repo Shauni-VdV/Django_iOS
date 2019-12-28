@@ -232,7 +232,8 @@
                         <viewLayoutGuide key="safeArea" id="wkh-EK-vzD"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="zbe-DB-lWO" id="fuN-3l-ATe"/>
+                        <outlet property="BackDropImageView" destination="zbe-DB-lWO" id="y3c-pm-gPp"/>
+                        <outlet property="TitleLabel" destination="vcf-gm-d1W" id="Z3O-Ay-JWc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JF-xW-iDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
