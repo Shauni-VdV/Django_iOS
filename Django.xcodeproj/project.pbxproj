@@ -24,6 +24,7 @@
 		3CB0F55F23B7E0C50068F10B /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0F55E23B7E0C50068F10B /* TokenResponse.swift */; };
 		3CB0F56123B7F12C0068F10B /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0F56023B7F12C0068F10B /* SessionResponse.swift */; };
 		3CB0F56523B900A40068F10B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0F56423B900A40068F10B /* FavoritesViewController.swift */; };
+		3CB0F56723B947DF0068F10B /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0F56623B947DF0068F10B /* MovieRepository.swift */; };
 		4FF67236513FEDC31997D6A2 /* Pods_DjangoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27242E5CE98C748C880D936B /* Pods_DjangoTests.framework */; };
 		77ABD3D8869CCBE010A22207 /* Pods_Django.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77A358BF8120079A82650FB /* Pods_Django.framework */; };
 		B2C817BB3338969B3B3756A9 /* Pods_Django_DjangoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4371FE3129D8612ACCCC972 /* Pods_Django_DjangoUITests.framework */; };
@@ -72,6 +73,7 @@
 		3CB0F55E23B7E0C50068F10B /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		3CB0F56023B7F12C0068F10B /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		3CB0F56423B900A40068F10B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		3CB0F56623B947DF0068F10B /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		426ECA145E8BE7E2F663F7D6 /* Pods-DjangoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.debug.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72DC61EAEB554C59A77CBE11 /* Pods-Django-DjangoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Django-DjangoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Django-DjangoUITests/Pods-Django-DjangoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		958632C288789EBCFD653AAB /* Pods-DjangoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjangoTests.release.xcconfig"; path = "Target Support Files/Pods-DjangoTests/Pods-DjangoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				3CB0F53E23B5685A0068F10B /* Movie.swift */,
+				3CB0F56623B947DF0068F10B /* MovieRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				3C6A114323B5240100F1D8D7 /* DiscoverViewController.swift in Sources */,
 				3CB0F53F23B5685A0068F10B /* Movie.swift in Sources */,
 				3CB0F56523B900A40068F10B /* FavoritesViewController.swift in Sources */,
+				3CB0F56723B947DF0068F10B /* MovieRepository.swift in Sources */,
 				3CB0F55B23B75B2A0068F10B /* MovieDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

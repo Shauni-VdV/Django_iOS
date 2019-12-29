@@ -14,8 +14,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var BackDropImageView: UIImageView!
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var RatingView: CosmosView!
+    @IBOutlet weak var FavoriteButton: UIButton!
     
     var movie: Movie!
+    var isFavorite: Bool {
+        return MovieRepository.favorites.contains(movie)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +29,32 @@ class MovieDetailViewController: UIViewController {
         
         self.TitleLabel.text = movie.title + " (" + movie.releaseDate.prefix(4) + ")"
         self.RatingView.rating = (movie.voteAverage / 2)
-        print(movie.voteAverage)
-        
+        if isFavorite{
+            FavoriteButton.setImage(UIImage(named: "heart-filled"), for: .normal)
+        } else {
+            FavoriteButton.setImage(UIImage(named: "heart-empty"), for: .normal)
+        }
     }
     
+    @IBAction func FavoriteButtonTapped(_ sender: UIButton) {
+        ApiClient.addToFavorites(movieId: movie.id, favorite: !isFavorite, completion: handleFavorite(success:error:))
+    }
     
+    func handleFavorite(success: Bool, error: Error?) {
+        if success{
+            if isFavorite{
+                MovieRepository.favorites = MovieRepository.favorites.filter() { $0 != movie}
+                FavoriteButton.setImage(UIImage(named: "heart-empty"), for: .normal)
+
+            } else {
+                MovieRepository.favorites.append(movie)
+                FavoriteButton.setImage(UIImage(named: "heart-filled"), for: .normal)
+            }
+            
+        }
+    }
 }
+
+
+
+

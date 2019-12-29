@@ -12,16 +12,16 @@ class FavoritesViewController : UIViewController {
     
     @IBOutlet weak var FavoritesTableView: UITableView!
     
-    var movies = [Movie]()
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Discover"
+        self.navigationItem.title = "Favorites"
         
         // Do any additional setup after loading the view.
         ApiClient.getFavorites() { movies, error in
-            self.movies = movies
+            MovieRepository.favorites = movies
+           print(movies)
             self.FavoritesTableView.reloadData()
         }
         self.FavoritesTableView.rowHeight = 200
@@ -34,7 +34,7 @@ class FavoritesViewController : UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showMovieDetail"{
             let detailViewController = segue.destination as! MovieDetailViewController
-            detailViewController.movie = movies[selectedIndex]
+            detailViewController.movie = MovieRepository.favorites[selectedIndex]
             
         }
     }
@@ -42,7 +42,7 @@ class FavoritesViewController : UIViewController {
 }
 extension FavoritesViewController : UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return movies.count
+        return MovieRepository.favorites.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +61,7 @@ extension FavoritesViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemViewCell")!
-        let movie = movies[indexPath.section]
+        let movie = MovieRepository.favorites[indexPath.section]
         
         cell.textLabel?.text = movie.title
         cell.imageView?.image = UIImage(named: "PlaceholderPoster")
