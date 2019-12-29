@@ -9,8 +9,6 @@
 // SOURCE: https://stackoverflow.com/questions/52591866/whats-the-correct-usage-of-urlsession-create-new-one-or-reuse-same-one
 
 import Foundation
-import Alamofire
-import SwiftyJSON
 
 class ApiClient {
     static let apiKey = "1db8f6ebe89295a86017d0bfe634af7b"
@@ -45,73 +43,24 @@ class ApiClient {
         }
     }
     
-    // Functie voor een GET request, zodat dit niet voor elke call herhaald moet worden
-    class func getRequestTask<ResponseType: Decodable>(
-        url: URL, responseType: ResponseType.Type,
-        completion: @escaping(ResponseType?, Error?) -> Void) -> URLSessionDataTask {
-        let task = URLSession.shared.dataTask(with: url){ data, response, error in
-            
-            guard let data = data else {
-                DispatchQueue.main.async{
-                    completion(nil, error)
-                }
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            do{
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
-                DispatchQueue.main.async {
-                    completion(responseObject, nil)
-                }
-            }catch {
-                do {
-                    let errorResponse = try decoder.decode(TMDbResponse.self, from: data) as Error
-                    DispatchQueue.main.async {
-                        completion(nil, errorResponse)
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(nil, error)
-                    }
-                }
-            }
-        }
-        task.resume()
-        
-        return task
-    }
-    
-    // Functie voor een POST request, zodat dit niet voor elke call herhaald moet worden
-    class func postRequestTask<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = try! JSONEncoder().encode(body)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+    // GET: Populaire films
+    class func getPopular(completion: @escaping([Movie], Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: Endpoints.getPopular.url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(nil, error)
+                completion([], error)
                 }
                 return
             }
             let decoder = JSONDecoder()
             do {
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                let response = try decoder.decode(MovieListResponse.self, from: data)
                 DispatchQueue.main.async {
-                    completion(responseObject, nil)
+                completion(response.results, nil)
                 }
             } catch {
-                do {
-                    let errorResponse = try decoder.decode(TMDbResponse.self, from: data) as Error
-                    DispatchQueue.main.async {
-                        completion(nil, errorResponse)
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(nil, error)
-                    }
+                DispatchQueue.main.async {
+                completion([], error)
                 }
             }
         }
@@ -119,42 +68,58 @@ class ApiClient {
     }
     
     
-    // GET: Populaire films
-    class func getPopular(completion: @escaping([Movie], Error?) -> Void) {
-        print("Entering getPopular in ApiClient")
-        getRequestTask(url: Endpoints.getPopular.url,responseType: MovieListResponse.self){response, error in
-            if let response = response {
-                completion(response.results, nil)
-            } else {
-                completion([], error)
-            }
-        }
-    }
+    
     
     // GET: Meest recente films
     class func getLatest(completion: @escaping([Movie], Error?) -> Void) {
-
-        getRequestTask(url: Endpoints.getLatest.url,responseType: MovieListResponse.self){response, error in
-            if let response = response {
-                completion(response.results, nil)
-            } else {
+        let task = URLSession.shared.dataTask(with: Endpoints.getLatest.url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
                 completion([], error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode(MovieListResponse.self, from: data)
+                DispatchQueue.main.async {
+                completion(response.results, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                completion([], error)
+                }
             }
         }
+        task.resume()
     }
     
     // Search
     class func search(query: String, completion: @escaping([Movie], Error?) -> Void ) -> URLSessionDataTask{
-        print("Entering search in ApiClient")
-        let task = getRequestTask(url: Endpoints.search(query).url, responseType: MovieListResponse.self) { response, error in
-            if let response = response {
-                completion(response.results, nil)
-            } else {
+        
+        let task = URLSession.shared.dataTask(with: Endpoints.search(query).url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
                 completion([], error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode(MovieListResponse.self, from: data)
+                DispatchQueue.main.async {
+                completion(response.results, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                completion([], error)
+                }
             }
         }
+        task.resume()
         return task
     }
+    
     
     
     // MARK: -Authenticatie
@@ -173,34 +138,76 @@ class ApiClient {
     
     static var requestToken = ""
     static var sessionId = ""
-
+    
     
     // Ingewikkelde manier van inloggen, zie : https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id
     // GET: RequestToken
     // MARK: -STAP 1 VAN AUTHENTICATIE
     class func getRequestToken(completion: @escaping(Bool, Error?) -> Void) {
-        getRequestTask(url: Endpoints.getRequestToken.url, responseType: TokenResponse.self) { response, error in
-            if let response = response {
-                requestToken = response.requestToken
-                completion(true, nil)
-            } else {
+        let task = URLSession.shared.dataTask(with: Endpoints.getRequestToken.url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
                 completion(false, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode(TokenResponse.self, from: data)
+                requestToken = response.requestToken
+                DispatchQueue.main.async {
+                completion(true, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                completion(false, error)
+                }
             }
         }
+        task.resume()
     }
+    
+    
+    
     // POST: Login
     // MARK: - STAP 2 VAN AUTHENTICATIE
-       class func login(username: String, password: String, completion: @escaping(Bool, Error?) -> Void){
-           let requestBody = LoginRequest(username: username, password: password, requestToken: requestToken)
-           postRequestTask(url: Endpoints.login.url, responseType: TokenResponse.self, body: requestBody) { response, error in
-               if let response = response {
-                   requestToken = response.requestToken
-                   completion(true, nil)
-               } else {
-                   completion(false, error)
-               }
-           }
-       }
+    class func login(username: String, password: String, completion: @escaping(Bool, Error?) -> Void){
+        let url = Endpoints.login.url
+        let body = LoginRequest(username: username, password: password, requestToken: requestToken)
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            
+            completion(false, error)
+        }
+        
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            guard let data = data else {
+                completion(false, error)
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode(TokenResponse.self, from: data)
+                requestToken = response.requestToken
+                DispatchQueue.main.async {
+                completion(true, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                completion(false, error)
+                }
+            }
+        })
+        task.resume()
+    }
+    
     
     //MARK: -STAP 3 VAN AUTHENTICATIE
     struct PostSession: Codable {
@@ -215,18 +222,43 @@ class ApiClient {
     
     // POST: SessionId
     class func postSessionId(completion: @escaping(Bool, Error?) -> Void) {
-        let requestBody = PostSession(requestToken : requestToken)
-        postRequestTask(url: Endpoints.postSessionId.url, responseType: SessionResponse.self, body: requestBody) { response, error in
-            if let response = response {
-                sessionId = response.sessionId
-                completion(true, nil)
-            } else {
-                completion(false, nil)
-            }
+        
+        let url = Endpoints.login.url
+        let body = PostSession(requestToken: requestToken)
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            completion(false, error)
         }
+        
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                completion(false, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode(SessionResponse.self, from: data)
+                sessionId = response.sessionId
+                DispatchQueue.main.async {
+                completion(true, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                completion(false, error)
+                }
+            }
+        })
+        task.resume()
+        
     }
-    
-   
-    
 }
 
