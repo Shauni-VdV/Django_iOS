@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TMDBResponse: Codable {
+struct TMDbResponse: Codable {
     let statusCode: Int
     let statusMessage: String
     
@@ -18,7 +18,7 @@ struct TMDBResponse: Codable {
     }
 }
 
-extension TMDBResponse: LocalizedError {
+extension TMDbResponse: LocalizedError {
     var errorDescription: String? {
         return statusMessage
     }
