@@ -129,9 +129,17 @@ class ApiClient {
         let password: String
         let requestToken: String
         
+        func toJSON() -> Dictionary<String, String> {
+            return [
+                "username": self.username,
+                "password": self.password,
+                "request_token": self.requestToken
+            ]
+            
+        }
         enum CodingKeys: String, CodingKey {
-            case username
-            case password
+            case username = "username"
+            case password = "password"
             case requestToken = "request_token"
         }
     }
@@ -144,6 +152,8 @@ class ApiClient {
     // GET: RequestToken
     // MARK: -STAP 1 VAN AUTHENTICATIE
     class func getRequestToken(completion: @escaping(Bool, Error?) -> Void) {
+        print("Entering getRequestToken")
+
         let task = URLSession.shared.dataTask(with: Endpoints.getRequestToken.url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
@@ -172,22 +182,29 @@ class ApiClient {
     // POST: Login
     // MARK: - STAP 2 VAN AUTHENTICATIE
     class func login(username: String, password: String, completion: @escaping(Bool, Error?) -> Void){
+        print("Entering login")
         let url = Endpoints.login.url
-        let body = LoginRequest(username: username, password: password, requestToken: requestToken)
+        let body : [String: Any] = ["username": username, "password": password, "request_token": requestToken]
+        
         let session = URLSession.shared
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
             
+            request.httpBody = try JSONSerialization.data(withJSONObject: body)
+            
+        } catch let error {
+            
+            print(error.localizedDescription)
             completion(false, error)
         }
         
-        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request){ data, response, error in
             guard let data = data else {
                 completion(false, error)
                 return
@@ -200,11 +217,12 @@ class ApiClient {
                 completion(true, nil)
                 }
             } catch {
+
                 DispatchQueue.main.async {
                 completion(false, error)
                 }
             }
-        })
+        }
         task.resume()
     }
     
@@ -214,6 +232,13 @@ class ApiClient {
         
         let requestToken: String
         
+        func toJSON() -> Dictionary<String, String> {
+            return [
+                "request_token": self.requestToken,
+            ]
+            
+        }
+        
         enum CodingKeys: String, CodingKey {
             case requestToken = "request_token"
         }
@@ -222,9 +247,11 @@ class ApiClient {
     
     // POST: SessionId
     class func postSessionId(completion: @escaping(Bool, Error?) -> Void) {
-        
-        let url = Endpoints.login.url
-        let body = PostSession(requestToken: requestToken)
+        print("Entering postSessionId")
+
+        let url = Endpoints.postSessionId.url
+        let body = PostSession(requestToken: requestToken).toJSON()
+        print(body)
         let session = URLSession.shared
         
         var request = URLRequest(url: url)
@@ -237,7 +264,12 @@ class ApiClient {
             completion(false, error)
         }
         
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+           request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            print("Response \(response)")
+            print(data as Any)
             guard let data = data else {
                 DispatchQueue.main.async {
                 completion(false, error)
@@ -248,6 +280,7 @@ class ApiClient {
             do {
                 let response = try decoder.decode(SessionResponse.self, from: data)
                 sessionId = response.sessionId
+                print(sessionId)
                 DispatchQueue.main.async {
                 completion(true, nil)
                 }
