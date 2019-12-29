@@ -141,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uw4-7g-Vv6">
-                                <rect key="frame" x="0.0" y="527.5" width="375" height="80.5"/>
+                                <rect key="frame" x="0.0" y="447" width="375" height="161"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This app is powered by The Movie Database. You can login using your TMDb Account using the button below" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xsh-QA-8yN">
                                 <rect key="frame" x="0.0" y="59" width="375" height="128"/>

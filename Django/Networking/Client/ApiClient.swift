@@ -13,6 +13,12 @@ import Foundation
 class ApiClient {
     static let apiKey = "1db8f6ebe89295a86017d0bfe634af7b"
     
+    struct Account {
+        static var accountId = 0
+        static var requestToken = ""
+        static var sessionId = ""
+    }
+    
     enum Endpoints {
         static let baseUrl = "https://api.themoviedb.org/3"
         // De TMDB API gebruikt query parameters ipv headers om de API Key mee te geven
@@ -24,6 +30,7 @@ class ApiClient {
         case login
         case getRequestToken
         case postSessionId
+        case getFavorites
         
         
         var endpointString: String {
@@ -35,6 +42,8 @@ class ApiClient {
             case .login: return Endpoints.baseUrl + "/authentication/token/validate_with_login" + Endpoints.apiKeyParam
             case .getRequestToken: return Endpoints.baseUrl + "/authentication/token/new" + Endpoints.apiKeyParam
             case .postSessionId: return Endpoints.baseUrl + "/authentication/session/new" + Endpoints.apiKeyParam
+            case .getFavorites : return Endpoints.baseUrl + "/account/\(Account.accountId)/watchlist/movies" + Endpoints.apiKeyParam + "&session_id=\(Account.sessionId)"
+                
             }
         }
         
@@ -73,6 +82,32 @@ class ApiClient {
     // GET: Meest recente films
     class func getLatest(completion: @escaping([Movie], Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: Endpoints.getLatest.url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                completion([], error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode(MovieListResponse.self, from: data)
+                DispatchQueue.main.async {
+                completion(response.results, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                completion([], error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    // Favorieten
+    class func getFavorites(completion: @escaping([Movie], Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: Endpoints.getFavorites.url) {
+            data, response, error in
+            
             guard let data = data else {
                 DispatchQueue.main.async {
                 completion([], error)
@@ -144,9 +179,6 @@ class ApiClient {
         }
     }
     
-    static var requestToken = ""
-    static var sessionId = ""
-    
     
     // Ingewikkelde manier van inloggen, zie : https://developers.themoviedb.org/3/authentication/how-do-i-generate-a-session-id
     // GET: RequestToken
@@ -164,7 +196,7 @@ class ApiClient {
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(TokenResponse.self, from: data)
-                requestToken = response.requestToken
+                Account.requestToken = response.requestToken
                 DispatchQueue.main.async {
                 completion(true, nil)
                 }
@@ -184,7 +216,7 @@ class ApiClient {
     class func login(username: String, password: String, completion: @escaping(Bool, Error?) -> Void){
         print("Entering login")
         let url = Endpoints.login.url
-        let body : [String: Any] = ["username": username, "password": password, "request_token": requestToken]
+        let body : [String: Any] = ["username": username, "password": password, "request_token": Account.requestToken]
         
         let session = URLSession.shared
         
@@ -212,7 +244,7 @@ class ApiClient {
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(TokenResponse.self, from: data)
-                requestToken = response.requestToken
+                Account.requestToken = response.requestToken
                 DispatchQueue.main.async {
                 completion(true, nil)
                 }
@@ -250,7 +282,7 @@ class ApiClient {
         print("Entering postSessionId")
 
         let url = Endpoints.postSessionId.url
-        let body = PostSession(requestToken: requestToken).toJSON()
+        let body = PostSession(requestToken: Account.requestToken).toJSON()
         print(body)
         let session = URLSession.shared
         
@@ -268,8 +300,6 @@ class ApiClient {
            request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
-            print("Response \(response)")
-            print(data as Any)
             guard let data = data else {
                 DispatchQueue.main.async {
                 completion(false, error)
@@ -279,8 +309,7 @@ class ApiClient {
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(SessionResponse.self, from: data)
-                sessionId = response.sessionId
-                print(sessionId)
+                Account.sessionId = response.sessionId
                 DispatchQueue.main.async {
                 completion(true, nil)
                 }
