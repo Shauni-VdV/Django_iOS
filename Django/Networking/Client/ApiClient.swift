@@ -103,6 +103,8 @@ class ApiClient {
                 let response = try decoder.decode(MovieListResponse.self, from: data)
                 DispatchQueue.main.async {
                     completion(response.results, nil)
+                    MovieRepository.favorites.append(contentsOf: response.results)
+
                 }
             } catch {
                 DispatchQueue.main.async {
