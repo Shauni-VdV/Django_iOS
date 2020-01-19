@@ -40,6 +40,7 @@ class FavoritesViewController : UIViewController {
     }
     
 }
+
 extension FavoritesViewController : UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         return MovieRepository.favorites.count

@@ -16,10 +16,13 @@ class SearchViewController: UIViewController {
     var movies = [Movie]()
     var selectedIndex = 0
     var currentSearch: URLSessionDataTask?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Search"
     }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showMovieDetail"{
             let detailViewController = segue.destination as! MovieDetailViewController
@@ -42,9 +45,7 @@ extension SearchViewController: UISearchBarDelegate {
             DispatchQueue.main.async {
                 self.SearchTableView.reloadData()
             }
-            print(self.movies.count)
         }
-        print(self.movies.count)
     }
     
     
@@ -81,11 +82,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         let movie = movies[indexPath.row]
         
+        // Since we don't display poster images, it is useful to show the year the movie was released in
         cell.textLabel?.text = "\(movie.title) - \(movie.releaseDate.prefix(4))"
         
         return cell
     }
     
+    // Navigate to the detail page when a movie from the list is tapped.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "showMovieDetail", sender: nil)

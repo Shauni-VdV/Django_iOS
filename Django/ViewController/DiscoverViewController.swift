@@ -23,7 +23,7 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Discover"
 
-        // Do any additional setup after loading the view.
+        // Fetch the current Popular movies from the API
         ApiClient.getPopular() { movies, error in
             self.movies = movies
             self.PopularTableView.reloadData()

@@ -24,13 +24,13 @@ class LoginViewController : UIViewController {
 
     }
     
-    
-    
+    // When the login button is tapped, start the login process.
+    // First we need to get a request token.
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         ApiClient.getRequestToken(completion: handleRequestToken(success: error:))
     }
     
-    
+    // Then we pass the email and password
     func handleRequestToken(success: Bool, error: Error?) {
         if success{
             ApiClient.login(username: EmailTextField.text ?? "", password: PasswordTextField.text ?? "", completion: handleLogin(success:error:))
@@ -38,7 +38,8 @@ class LoginViewController : UIViewController {
             showLoginFailed(message: error?.localizedDescription ?? "")
         }
     }
-    
+
+    // Check if the login was successful, if so continue to the session part
     func handleLogin(success: Bool, error: Error?) {
         if success {
             ApiClient.postSessionId(completion: handleSession(success:error:))
@@ -47,6 +48,7 @@ class LoginViewController : UIViewController {
         }
     }
     
+    // If the session was handled successfully, navigate out of the login screen
     func handleSession(success: Bool, error: Error?){
         if success {
             _ = navigationController?.popViewController(animated: true)
@@ -56,6 +58,7 @@ class LoginViewController : UIViewController {
         }
     }
     
+    // Show alert if login was not successful.
     func showLoginFailed(message: String){
         let alertVC = UIAlertController(title: "Login not successful", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
