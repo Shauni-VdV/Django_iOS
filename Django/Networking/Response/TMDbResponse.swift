@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// The response used when adding a movie to favorites
 struct TMDbResponse: Codable {
     let statusCode: Int
     let statusMessage: String

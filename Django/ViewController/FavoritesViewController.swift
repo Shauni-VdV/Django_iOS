@@ -1,57 +1,54 @@
 //
-//  FirstViewController.swift
+//  FavoritesViewController.swift
 //  Django
 //
-//  Created by Shauni Van de Velde on 26/12/2019.
+//  Created by Shauni Van de Velde on 29/12/2019.
 //  Copyright © 2019 Shauni Van de Velde. All rights reserved.
-// SOURCE : Filling in UITableView: https://stackoverflow.com/questions/31673607/swift-tableview-in-viewcontroller/31691216
-// SOURCE : Spacing between items in table view: https://stackoverflow.com/questions/6216839/how-to-add-spacing-between-uitableviewcell/33931591#33931591
-
+//
 
 import UIKit
-import SDWebImage
 
-class DiscoverViewController: UIViewController {
-
-    @IBOutlet weak var PopularTableView: UITableView!
+class FavoritesViewController : UIViewController {
     
+    @IBOutlet weak var FavoritesTableView: UITableView!
     
-    var movies = [Movie]()
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Discover"
-
-        // Fetch the current Popular movies from the API
-        ApiClient.getPopular() { movies, error in
-            self.movies = movies
-            self.PopularTableView.reloadData()
+        self.navigationItem.title = "Favorites"
+        
+        // Do any additional setup after loading the view.
+        ApiClient.getFavorites() { movies, error in
+            MovieRepository.favorites = movies
+           print(movies)
+            self.FavoritesTableView.reloadData()
         }
-        self.PopularTableView.rowHeight = 200
+        self.FavoritesTableView.rowHeight = 200
     }
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        PopularTableView.reloadData()
+        FavoritesTableView.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showMovieDetail"{
             let detailViewController = segue.destination as! MovieDetailViewController
-            detailViewController.movie = movies[selectedIndex]
-
+            detailViewController.movie = MovieRepository.favorites[selectedIndex]
+            
         }
     }
     
 }
-extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate{
+
+extension FavoritesViewController : UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return movies.count
+        return MovieRepository.favorites.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
-
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -64,17 +61,17 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemViewCell")!
-        let movie = movies[indexPath.section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemViewCell")!
+        let movie = MovieRepository.favorites[indexPath.section]
         
         cell.textLabel?.text = movie.title
         cell.imageView?.image = UIImage(named: "PlaceholderPoster")
         cell.imageView?.sd_setImage(with: movie.posterURL, placeholderImage: UIImage(named: "PlaceholderPoster"))
         cell.imageView?.frame = cell.frame.offsetBy(dx: 10, dy: 10);
-
+        
         cell.layoutIfNeeded()
         cell.setNeedsLayout()
-
+        
         return cell
     }
     
@@ -87,12 +84,3 @@ extension DiscoverViewController : UITableViewDataSource, UITableViewDelegate{
     
     
 }
-    
-    
-    
-        
-   
-
-
-
-
