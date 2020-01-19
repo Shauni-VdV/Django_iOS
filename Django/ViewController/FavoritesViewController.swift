@@ -65,6 +65,7 @@ extension FavoritesViewController : UITableViewDataSource, UITableViewDelegate{
         let movie = MovieRepository.favorites[indexPath.section]
         
         cell.textLabel?.text = movie.title
+        cell.textLabel?.textColor = .white
         cell.imageView?.image = UIImage(named: "PlaceholderPoster")
         cell.imageView?.sd_setImage(with: movie.posterURL, placeholderImage: UIImage(named: "PlaceholderPoster"))
         cell.imageView?.frame = cell.frame.offsetBy(dx: 10, dy: 10);
