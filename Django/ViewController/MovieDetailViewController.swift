@@ -15,6 +15,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var RatingView: CosmosView!
     @IBOutlet weak var FavoriteButton: UIButton!
+    @IBOutlet weak var DescriptionLabel: UILabel!
     
     var movie: Movie!
     var isFavorite: Bool {
@@ -30,6 +31,9 @@ class MovieDetailViewController: UIViewController {
         
         // Set the title of the movie
         self.TitleLabel.text = movie.title + " (" + movie.releaseDate.prefix(4) + ")"
+        
+        // Set the movie description
+        self.DescriptionLabel.text = movie.overview
         
         // Calculate the rating, the RatingView goes up to 5 stars, and the rating in the API is a score out of 10, so divide by 2.
         self.RatingView.rating = (movie.voteAverage / 2)
