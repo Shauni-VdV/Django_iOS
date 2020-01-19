@@ -60,8 +60,17 @@ class LoginViewController : UIViewController {
     
     // Show alert if login was not successful.
     func showLoginFailed(message: String){
-        let alertVC = UIAlertController(title: "Login not successful", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        // Clear the password field
+        PasswordTextField.text = ""
+
+        // create the alert
+               let alert = UIAlertController(title: "Login Failed", message: "Username or password incorrect", preferredStyle: UIAlertController.Style.alert)
+
+               // add an action (button)
+               alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+               // show the alert
+               self.present(alert, animated: true, completion: nil)
+            
     }
 }
