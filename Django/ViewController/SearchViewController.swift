@@ -85,6 +85,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         // Since we don't display poster images, it is useful to show the year the movie was released in
         cell.textLabel?.text = "\(movie.title) - \(movie.releaseDate.prefix(4))"
         
+        cell.textLabel?.textColor = .white
+
+        
         return cell
     }
     
